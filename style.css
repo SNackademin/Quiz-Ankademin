@@ -1,0 +1,56 @@
+ body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(113deg,#712D9B 0.75%, #3d1a59 53.5%, #1f1035 96.93%);
+ }
+
+ h1{
+    color: white;
+ }
+ .container {
+    min-width: 800px;
+    min-height: 200px;
+    background-color: white;
+    border-radius: 20px;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+    display: flex;
+    padding: 40px;
+ }
+
+ #start-button {
+    background-color: #561c7f;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 300px;
+    height: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+ }
+ #start-button:hover {
+    background-color: #9500ff;
+}
+
+#player-name {
+    width: 300px;
+    height: 40px;
+    font-size: medium;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    color: #848383;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    font-style: italic;
+}
