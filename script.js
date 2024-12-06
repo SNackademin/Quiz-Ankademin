@@ -9,15 +9,12 @@ let changeBackgroundColor = document.getElementById('change-color');
 changeBackgroundColor.addEventListener('click', () => {
     
     const currentBackgroundColor = document.body.style.backgroundColor;
-    if (currentBackgroundColor === '#30164A') {
+    if (currentBackgroundColor === 'rgb(48, 22, 74)') {
         document.body.style.backgroundColor = '#692A91';
-    } else if (currentBackgroundColor === '#692A91') {
+    } else {
         document.body.style.backgroundColor = '#30164A';
     }
-})
-
-
-
+});
 
 
 
