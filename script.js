@@ -35,38 +35,7 @@ changeColor.addEventListener('click', () => {
     // } else {
     //     currentInputTextColor.style.color = 'rgb(132, 131, 131)';
     // }
-
-
-
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -76,23 +45,14 @@ startGameButton.addEventListener('click', () => {
     console.log(playerNameDisplay)
     playerName.value = "";
 
+    document.querySelector('.container').innerHTML = '';
 
+    const container = document.querySelector('.container');
+    questions.forEach((item, index) => {
+        const questionElement = document.createElement('h2'); // Crea un h2
+        questionElement.textContent = `${index + 1}. ${item.question}`; // Añade la pregunta al h2
+        container.appendChild(questionElement); // Agrega el h2 al container
+    });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    
 })
