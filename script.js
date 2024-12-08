@@ -46,16 +46,29 @@ startGameButton.addEventListener('click', () => {
     renderQuestion()
 })
 
-let questionNumber = 0;
+let questionNumber = 1;
 
 function renderQuestion() {
 
     const container = document.querySelector('.container');
 
     if (questionNumber < questions.length) {
+
+        console.log("This is the question number: " + questionNumber)
+
         const h2Question = document.createElement('h2');
         h2Question.textContent = questions[questionNumber].question
         container.appendChild(h2Question)
+
+        const netQuestionButton = document.createElement('button');
+        netQuestionButton.textContent = 'Next question';
+
+        netQuestionButton.addEventListener('click',() => {
+            questionNumber++;
+            renderQuestion();
+        })
+        container.appendChild(netQuestionButton)
+
     }
 
 
@@ -63,7 +76,7 @@ function renderQuestion() {
 
 
 
-    
+
 
 
 
