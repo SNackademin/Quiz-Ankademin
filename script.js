@@ -43,5 +43,28 @@ startGameButton.addEventListener('click', () => {
     playerName.value = "";
 
     document.querySelector('.container').innerHTML = '';
-
+    renderQuestion()
 })
+
+let questionNumber = 0;
+
+function renderQuestion() {
+
+    const container = document.querySelector('.container');
+
+    if (questionNumber < questions.length) {
+        const h2Question = document.createElement('h2');
+        h2Question.textContent = questions[questionNumber].question
+        container.appendChild(h2Question)
+    }
+
+
+
+
+
+
+    
+
+
+
+}
