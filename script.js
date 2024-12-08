@@ -37,9 +37,6 @@ changeColor.addEventListener('click', () => {
     // }
 });
 
-
-
-
 startGameButton.addEventListener('click', () => {
     let playerNameDisplay = playerName.value.trim() || 'Anonymous';
     console.log(playerNameDisplay)
@@ -47,12 +44,4 @@ startGameButton.addEventListener('click', () => {
 
     document.querySelector('.container').innerHTML = '';
 
-    const container = document.querySelector('.container');
-    questions.forEach((item, index) => {
-        const questionElement = document.createElement('h2'); // Crea un h2
-        questionElement.textContent = `${index + 1}. ${item.question}`; // Añade la pregunta al h2
-        container.appendChild(questionElement); // Agrega el h2 al container
-    });
-
-    
 })
