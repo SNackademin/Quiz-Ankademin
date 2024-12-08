@@ -46,7 +46,7 @@
     padding: 40px;
  }
 
- #start-button {
+ #start-button, #next-question-button {
     background-color: #561c7f;
     color: white;
     border: none;

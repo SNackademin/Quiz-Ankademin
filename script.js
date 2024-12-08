@@ -42,7 +42,7 @@ startGameButton.addEventListener('click', () => {
     console.log(playerNameDisplay)
     playerName.value = "";
 
-    document.querySelector('.container').innerHTML = '';
+    //document.querySelector('.container').innerHTML = '';
     renderQuestion()
 })
 
@@ -54,20 +54,22 @@ function renderQuestion() {
 
     if (questionNumber < questions.length) {
 
+        document.querySelector('.container').innerHTML = '';
+        
         console.log("This is the question number: " + questionNumber)
 
         const h2Question = document.createElement('h2');
         h2Question.textContent = questions[questionNumber].question
         container.appendChild(h2Question)
 
-        const netQuestionButton = document.createElement('button');
-        netQuestionButton.textContent = 'Next question';
-
-        netQuestionButton.addEventListener('click',() => {
+        const nextQuestionButton = document.createElement('button');
+        nextQuestionButton.textContent = 'Next question';
+        nextQuestionButton.id = 'next-question-button';
+        nextQuestionButton.addEventListener('click',() => {
             questionNumber++;
             renderQuestion();
         })
-        container.appendChild(netQuestionButton)
+        container.appendChild(nextQuestionButton)
 
     }
 
