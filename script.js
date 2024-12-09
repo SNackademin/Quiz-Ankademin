@@ -111,6 +111,13 @@ function renderQuestion() {
             labelRadioType.innerHTML = posibleAnswer;
             container.appendChild(labelRadioType);
         
+            const inputRadioType = document.createElement('input');
+            inputRadioType.type = 'ratio';
+            inputRadioType.name = 'ratio-select'
+            inputRadioType.value = posibleAnswer;
+
+            container.appendChild(inputRadioType);
+
         });
     }
     
