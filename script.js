@@ -106,18 +106,20 @@ function renderQuestion() {
 
     //Run radio answers
     function radioType(container, answers) {
+
         answers.forEach(posibleAnswer => {
+            
             const labelRadioType = document.createElement('label');
             labelRadioType.innerHTML = posibleAnswer;
             container.appendChild(labelRadioType);
         
             const inputRadioType = document.createElement('input');
-            inputRadioType.type = 'ratio';
-            inputRadioType.name = 'ratio-select'
+            inputRadioType.type = 'radio';
+            inputRadioType.name = 'radio-select'
             inputRadioType.value = posibleAnswer;
 
             container.appendChild(inputRadioType);
-
+            labelRadioType.appendChild(inputRadioType);
         });
     }
     
