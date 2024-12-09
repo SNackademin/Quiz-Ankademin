@@ -38,29 +38,41 @@ changeColor.addEventListener('click', () => {
 });
 
 startGameButton.addEventListener('click', () => {
-    let playerNameDisplay = playerName.value.trim() || 'Anonymous';
+    let playerNameDisplay = playerName.value.trim() || 'anonymous player';
     console.log(playerNameDisplay)
-    playerName.value = "";
+    //playerName.value = "";
 
     //document.querySelector('.container').innerHTML = '';
     renderQuestion()
 })
 
-let questionNumber = 1;
+let questionNumber = 0;
 
 function renderQuestion() {
 
     const container = document.querySelector('.container');
+    const title = document.querySelector('h1');
+
+    document.querySelector('.container').innerHTML = '';
 
     if (questionNumber < questions.length) {
 
-        document.querySelector('.container').innerHTML = '';
-        
         console.log("This is the question number: " + questionNumber)
 
         const h2Question = document.createElement('h2');
         h2Question.textContent = questions[questionNumber].question
         container.appendChild(h2Question)
+
+        
+        if (questions[questionNumber].type === "boolean") {
+            trueFalseType(container,questions[questionNumber].answers);
+        }
+
+
+
+
+
+
 
         const nextQuestionButton = document.createElement('button');
         nextQuestionButton.textContent = 'Next question';
@@ -71,9 +83,23 @@ function renderQuestion() {
         })
         container.appendChild(nextQuestionButton)
 
+    } else {
+        title.textContent = `Congratulations ${playerName.value.trim() || "anonymous player"} you have completed the quiz!`
     }
 
 
+    //Run true false answers
+    function trueFalseType(container,answers) {
+
+        answers.forEach(posibleAnswer => {
+            
+            const trueFalseButton = document.createElement('button');
+            trueFalseButton.textContent = posibleAnswer;
+            container.appendChild(trueFalseButton);
+            
+        });
+      
+    }
 
 
 
