@@ -63,9 +63,11 @@ function renderQuestion() {
         h2Question.textContent = questions[questionNumber].question
         container.appendChild(h2Question)
 
-        
+
         if (questions[questionNumber].type === "boolean") {
             trueFalseType(container,questions[questionNumber].answers);
+        } else if(questions[questionNumber].type === "radio") {
+            radioType(container, questions[questionNumber].answers)
         }
 
 
@@ -94,6 +96,7 @@ function renderQuestion() {
         answers.forEach(posibleAnswer => {
             
             const trueFalseButton = document.createElement('button');
+            trueFalseButton.id = 'true-false-button'
             trueFalseButton.textContent = posibleAnswer;
             container.appendChild(trueFalseButton);
             
@@ -101,6 +104,16 @@ function renderQuestion() {
       
     }
 
+    //Run radio answers
+    function radioType(container, answers) {
+        answers.forEach(posibleAnswer => {
+            const labelRadioType = document.createElement('label');
+            labelRadioType.innerHTML = posibleAnswer;
+            container.appendChild(labelRadioType);
+        
+        });
+    }
+    
 
 
 
