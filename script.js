@@ -63,19 +63,16 @@ function renderQuestion() {
         h2Question.textContent = questions[questionNumber].question
         container.appendChild(h2Question)
 
-
+        //call functions
         if (questions[questionNumber].type === "boolean") {
             trueFalseType(container,questions[questionNumber].answers);
         } else if(questions[questionNumber].type === "radio") {
             radioType(container, questions[questionNumber].answers)
+        } else if (questions[questionNumber].type === "checkbox"){
+            checkboxType(container, questions[questionNumber].answers)
         }
 
-
-
-
-
-
-
+        //next button
         const nextQuestionButton = document.createElement('button');
         nextQuestionButton.textContent = 'Next question';
         nextQuestionButton.id = 'next-question-button';
@@ -85,6 +82,7 @@ function renderQuestion() {
         })
         container.appendChild(nextQuestionButton)
 
+        
     } else {
         title.textContent = `Congratulations ${playerName.value.trim() || "anonymous player"} you have completed the quiz!`
     }
@@ -99,16 +97,14 @@ function renderQuestion() {
             trueFalseButton.id = 'true-false-button'
             trueFalseButton.textContent = posibleAnswer;
             container.appendChild(trueFalseButton);
-            
         });
-      
     }
 
     //Run radio answers
     function radioType(container, answers) {
 
         answers.forEach(posibleAnswer => {
-            
+
             const labelRadioType = document.createElement('label');
             labelRadioType.innerHTML = posibleAnswer;
             container.appendChild(labelRadioType);
@@ -122,12 +118,21 @@ function renderQuestion() {
             labelRadioType.appendChild(inputRadioType);
         });
     }
+
+    //Run checkbox answers
+    function checkboxType(container, answers) {
+
+        answers.forEach(posibleAnswer => {
+            const labelCheckboxType = document.createElement('label');
+            const InputCheckboxType = document.createElement('input');
+            InputCheckboxType.type = "checkbox";
+            InputCheckboxType.name = 'checkbox-select'
+            InputCheckboxType.value = posibleAnswer;
     
-
-
-
-
-
-
+            labelCheckboxType.textContent = posibleAnswer;
+            labelCheckboxType.appendChild(InputCheckboxType);
+            container.appendChild(labelCheckboxType);
+        });
+    }
 
 }
