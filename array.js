@@ -2,37 +2,37 @@ export const questions = [
     {
         question: "JavaScript can be used on both the front-end and back-end.",
         answers: ["True", "False"],
-        correctAnswer: 0, // True
+        correctAnswer: true, // True
         type: "boolean"
     },
     {
         question: "The 'var' keyword declares a block-scoped variable in JavaScript.",
         answers: ["True", "False"],
-        correctAnswer: 1, // False
+        correctAnswer: false, // False
         type: "boolean"
     },
     {
         question: "Functions in JavaScript can return other functions.",
         answers: ["True", "False"],
-        correctAnswer: 0, // True
+        correctAnswer: true, // True
         type: "boolean"
     },
     {
         question: "The 'typeof' operator in JavaScript can return 'function' as a type.",
         answers: ["True", "False"],
-        correctAnswer: 0, // True
+        correctAnswer: true, // True
         type: "boolean"
     },
     {
         question: "JavaScript and Java are the same programming language.",
         answers: ["True", "False"],
-        correctAnswer: 1, // False
+        correctAnswer: false, // False
         type: "boolean"
     },
     {
         question: "The 'null' value in JavaScript has a type of 'object'.",
         answers: ["True", "False"],
-        correctAnswer: 0, // True
+        correctAnswer: true, // True
         type: "boolean"
     },
     {

@@ -3,7 +3,7 @@ console.log(questions)
 
 let playerName = document.getElementById('player-name');
 const startGameButton = document.getElementById('start-button');
-//let playerScore = 0;
+let playerScore = 0;
 
 let changeColor = document.getElementById('change-color');
 changeColor.addEventListener('click', () => {
@@ -47,13 +47,16 @@ startGameButton.addEventListener('click', () => {
 })
 
 let questionNumber = 0;
-
+let selectedAnswer = null;
 function renderQuestion() {
 
     const container = document.querySelector('.container');
     const title = document.querySelector('h1');
 
     document.querySelector('.container').innerHTML = '';
+
+    title.textContent = `Question ${questionNumber + 1} of ${questions.length}`;
+
 
     if (questionNumber < questions.length) {
 
@@ -77,6 +80,11 @@ function renderQuestion() {
         nextQuestionButton.textContent = 'Next question';
         nextQuestionButton.id = 'next-question-button';
         nextQuestionButton.addEventListener('click',() => {
+
+            validatedCheckedAnswer(selectedAnswer,questions[questionNumber].correctAnswer);
+            selectedAnswer = null;
+
+
             questionNumber++;
             renderQuestion();
         })
@@ -91,11 +99,18 @@ function renderQuestion() {
     //Run true false answers
     function trueFalseType(container,answers) {
 
+        selectedAnswer = null;
+
         answers.forEach(posibleAnswer => {
             
             const trueFalseButton = document.createElement('button');
-            trueFalseButton.id = 'true-false-button'
+            trueFalseButton.id = posibleAnswer;
             trueFalseButton.textContent = posibleAnswer;
+
+            trueFalseButton.addEventListener('click', () =>{
+                selectedAnswer = (posibleAnswer === "True");
+            })
+
             container.appendChild(trueFalseButton);
         });
     }
@@ -135,4 +150,14 @@ function renderQuestion() {
         });
     }
 
+}
+
+//function validateCheckedAnwser()
+function validatedCheckedAnswer(selectedAnswer, correctAnswer) {
+    if (selectedAnswer === correctAnswer) {
+        playerScore++;
+        console.log("Correct answer! Player Score: " + playerScore);
+    } else {
+        console.log("Incorrect answer. Player Score: " + playerScore);
+    }
 }
