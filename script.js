@@ -49,7 +49,7 @@ startGameButton.addEventListener('click', () => {
 let questionNumber = 0;
 let selectedAnswer = null;
 function renderQuestion() {
-
+    selectedAnswer = [];
     const container = document.querySelector('.container');
     const title = document.querySelector('h1');
 
@@ -143,7 +143,9 @@ function renderQuestion() {
     //Run checkbox answers
     function checkboxType(container, answers) {
 
-        answers.forEach(posibleAnswer => {
+        selectedAnswer =[];
+
+        answers.forEach((posibleAnswer, index) => {
             const labelCheckboxType = document.createElement('label');
             const InputCheckboxType = document.createElement('input');
             InputCheckboxType.type = "checkbox";
@@ -153,17 +155,39 @@ function renderQuestion() {
             labelCheckboxType.textContent = posibleAnswer;
             labelCheckboxType.appendChild(InputCheckboxType);
             container.appendChild(labelCheckboxType);
+
+            InputCheckboxType.addEventListener('change' , ()=>{
+                if (InputCheckboxType.checked){
+                    if (!selectedAnswer.includes(index)) {
+                        selectedAnswer.push(index);
+                    }
+                } else { // If no selected delete from array
+                    const toRemoveIndex = selectedAnswer.indexOf(index);
+                    if (toRemoveIndex !== -1) {
+                        selectedAnswer.splice(toRemoveIndex, 1);
+                    }
+                }
+            })
         });
     }
 
 }
 
-//function validateCheckedAnwser()
+//function validateCheckedAnswer()
 function validatedCheckedAnswer(selectedAnswer, correctAnswer) {
-    if (selectedAnswer === correctAnswer) {
+  
+    if (Array.isArray(correctAnswer)) { // Checkbox (array)
+
+        const checkSelectedCorrect = selectedAnswer.length === correctAnswer.length && correctAnswer.every(answer => selectedAnswer.includes(answer));
+
+        if (checkSelectedCorrect) {
+            playerScore++;
+            console.log("Correct answer! Player Score: " + playerScore);
+        } else {
+            console.log("Incorrect answer. Player Score: " + playerScore);
+        }
+    } else if (selectedAnswer === correctAnswer) { // Boolean - radio
         playerScore++;
-        console.log("Correct answer! Player Score: " + playerScore);
-    } else {
-        console.log("Incorrect answer. Player Score: " + playerScore);
     }
+
 }
