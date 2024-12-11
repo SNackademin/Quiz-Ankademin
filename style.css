@@ -12,22 +12,52 @@
 
  h1{
     font-size: 40px;
+    font-family: "Snowburst One", system-ui;
  }
  h2 {
    font-size: 30px;
+   font-family: "Englebert", cursive;
  }
  h3{
    font-size: 30px;
+   font-family: "Snowburst One", system-ui;
  }
  h4 {
    font-size: 25px;
+   font-family: "Snowburst One", system-ui;
  }
-label {
+
+ .show-answers label {
    font-size: 25px;
+   font-family: "Englebert", cursive;
+   border: 2px solid white;
+   border-radius: 5px;
+   padding: 10px;
+   margin: 10px;
+   display: block;
+   flex-direction: column;
+   align-items: flex-start;
 }
+label:before {
+   border: 3px solid lightgreen;
+}
+
+.show-answers label:active {
+   background-color: #4CAF50;
+   border-color: grey;
+}
+
+input[type="radio"]{
+   display: none;
+}
+input[type="checkbox"]{
+   display: none;
+}
+
 li {
-   font-size: 20px;
+   font-size: 25px;
    list-style: none;
+   font-family: "Englebert", cursive;
 }
  #change-color {
     background-color: #561c7f;
@@ -41,6 +71,7 @@ li {
     position: fixed;
     top: 15px;
     right: 15px;
+    font-family: "Snowburst One", system-ui;
 }
 #reset-quiz{
    background-color: #561c7f;
@@ -53,8 +84,10 @@ li {
    height: 40px;
    position: fixed;
    top: 15px;
-   left: 15px;}
-
+   left: 15px;
+   font-family: "Snowburst One", system-ui;
+}
+   
 
 #change-color:hover,#next-question-button:hover,#reset-quiz:hover,#start-button:hover {
     background-color: #9500ff;
@@ -87,8 +120,8 @@ li {
     text-align: center;
     align-items: center;
     margin-top: 20px;
+    font-family: "Snowburst One", system-ui;
  }
-
 
 #player-name {
     width: 300px;
@@ -105,10 +138,31 @@ li {
 
 .show-answers {
    
-   text-align: left;
+   text-align: center;
    padding: 10px;
 
    border-radius: 5px;
-   margin-top: 20px;
+
 }
 
+#True,#False{
+width: 150px;
+height: 40px;
+font-size: 20px;
+margin: 40px;
+border-radius: 10px;
+cursor: pointer;
+font-family: "Englebert", cursive;
+}
+#True:hover, #False:hover {
+   opacity: 0.5;
+}
+
+.show-answers button#True {
+   background-color: #4CAF50;
+   color: white;
+ }
+ .show-answers button#False {
+   background-color: #f44336;
+   color: white;
+ }
