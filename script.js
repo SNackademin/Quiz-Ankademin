@@ -114,6 +114,26 @@ function renderQuestion() {
 
         showMessage.textContent = resultShowMessage;
         container.append(showMessage)
+
+        //check if there is something in the array
+        if(incorrectSelectedAnswers.length> 0){
+
+            const incorrectTittle = document.createElement('h4');
+            incorrectTittle.textContent = 'You answered the following questions wrong:'
+            container.appendChild(incorrectTittle);
+
+            const incorrectAnswersList = document.createElement('ul');
+
+            //Create a li for every incorrect anwser
+            incorrectSelectedAnswers.forEach(item => {
+                const incorrectAnswersAddToList =document.createElement('li');
+                incorrectAnswersAddToList.textContent =  `${item.number}: ${item.question}`;
+
+                incorrectAnswersList.appendChild(incorrectAnswersAddToList);
+            })
+            
+            container.appendChild(incorrectAnswersList);
+        }
     }
 
 
@@ -194,6 +214,8 @@ function renderQuestion() {
 
 }
 
+let incorrectSelectedAnswers = [];
+
 //function validateCheckedAnswer()
 function validatedCheckedAnswer(selectedAnswer, correctAnswer) {
   
@@ -203,9 +225,18 @@ function validatedCheckedAnswer(selectedAnswer, correctAnswer) {
 
         if (checkSelectedCorrect) {
             playerScore++;
+        } else {// push number and incorrect question
+            incorrectSelectedAnswers.push({
+                number: questionNumber + 1,
+                question: questions[questionNumber].question
+            });
         }
     } else if (selectedAnswer === correctAnswer) { // Boolean - radio
         playerScore++;
+    } else {  //push number and incorrect question
+        incorrectSelectedAnswers.push({
+            number: questionNumber + 1,
+            question: questions[questionNumber].question
+        });
     }
-
 }
