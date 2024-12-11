@@ -38,7 +38,7 @@ stopQuizButton.addEventListener('click', () => {
     const title = document.querySelector('h1');
 
     document.querySelector('.container').innerHTML = '';
-    
+
     title.textContent = `You abandoned the quiz`;
 
     const playerFinalScore = document.createElement('h2');

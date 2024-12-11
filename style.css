@@ -4,27 +4,30 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    height: 100vh;
-    width: 100%;
     background: radial-gradient(circle, rgba(113,45,155,1) 25%, rgba(61,26,89,1) 50%, rgba(31,16,53,1) 90%);
     margin: 0;
  }
 
  h1{
-    font-size: 40px;
-    font-family: "Snowburst One", system-ui;
+   margin: 100px 150px 100px 150px;
+   font-size: 40px;
+   font-family: "Snowburst One", system-ui;
+   text-align: center;
  }
  h2 {
    font-size: 30px;
    font-family: "Englebert", cursive;
+   text-align: center;
  }
  h3{
    font-size: 30px;
    font-family: "Snowburst One", system-ui;
+   text-align: center;
  }
  h4 {
    font-size: 25px;
    font-family: "Snowburst One", system-ui;
+   text-align: center;
  }
 
  .show-answers label {
@@ -38,26 +41,26 @@
    flex-direction: column;
    align-items: flex-start;
 }
-label:before {
-   border: 3px solid lightgreen;
-}
 
-.show-answers label:active {
+.show-answers label:hover {
    background-color: #4CAF50;
    border-color: grey;
 }
 
 input[type="radio"]{
-   display: none;
+   cursor: pointer;
+   /* display: none; */
 }
 input[type="checkbox"]{
-   display: none;
+   cursor: pointer;
+   /* display: none; */
 }
 
 li {
    font-size: 25px;
    list-style: none;
    font-family: "Englebert", cursive;
+   margin-bottom: 5px;
 }
  #change-color {
     background-color: #561c7f;
@@ -94,15 +97,17 @@ li {
 }
 
  .container {
-    min-width: 800px;
+    width: 80%;
     min-height: 200px;
+    max-width: 1000px;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 20px;
     align-items: center;
     flex-direction: column;
     justify-content: center;
     display: flex;
-    padding: 50px;
+    margin-bottom: 100px;
+ 
  }
 
  #start-button, #next-question-button {
@@ -120,6 +125,7 @@ li {
     text-align: center;
     align-items: center;
     margin-top: 20px;
+    margin-bottom: 25px;
     font-family: "Snowburst One", system-ui;
  }
 
