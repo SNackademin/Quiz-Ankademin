@@ -93,6 +93,32 @@ function renderQuestion() {
         
     } else {
         title.textContent = `Congratulations ${playerName.value.trim() || "anonymous player"} you have completed the quiz!`
+
+        const playerFinalScore =document.createElement('h2');
+        playerFinalScore.textContent = `Your final score is: ${playerScore} points!`
+
+        container.appendChild(playerFinalScore);
+
+        //calculate procent 
+        let totalNumberQuestions =  questions.length;
+        let totalPercent = (playerScore/totalNumberQuestions) * 100;
+
+        const showMessage = document.createElement('h3');
+        let resultShowMessage = '';
+
+        if (totalPercent > 75){
+            resultShowMessage = 'You did very well!';
+            showMessage.style.color = 'green'
+        }else if (totalPercent >= 50) {
+            resultShowMessage = 'At least you tried!';
+            showMessage.style.color = 'yellow'
+        } else if (totalPercent <= 50){
+            resultShowMessage = "If I had been you I wouldn't have even tried :)";
+            showMessage.style.color = 'red'
+        }
+
+        showMessage.textContent = resultShowMessage;
+        container.append(showMessage)
     }
 
 
