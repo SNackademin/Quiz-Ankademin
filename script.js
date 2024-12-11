@@ -2,8 +2,10 @@ import {questions} from './array.js';
 
 let playerName = document.getElementById('player-name');
 const startGameButton = document.getElementById('start-button');
+const stopQuizButton = document.getElementById('reset-quiz');
 let playerScore = 0;
-//i need fix that
+
+//I need fix this
 let changeColor = document.getElementById('change-color');
 
 let currentBodyBackgroundColor = true;
@@ -17,9 +19,9 @@ function updateChekedTextColor() {
     let newColorText;
 
     if (currentTextHTMLColor) {
-            newColorText = 'black';
+            newColorText = 'white';
         } else {
-            newColorText = 'white'
+            newColorText = 'black'
         };
 
         h1.style.color = newColorText;
@@ -29,6 +31,21 @@ function updateChekedTextColor() {
         element.style.color = newColorText;
     })
 }
+
+
+stopQuizButton.addEventListener('click', () => {
+    const container = document.querySelector('.container');
+    const title = document.querySelector('h1');
+
+    document.querySelector('.container').innerHTML = '';
+    
+    title.textContent = `You abandoned the quiz`;
+
+    const playerFinalScore = document.createElement('h2');
+    playerFinalScore.textContent = `Your score is: ${playerScore} points!`;
+    container.appendChild(playerFinalScore);
+
+    });
 
 
 changeColor.addEventListener('click', () => {
@@ -66,7 +83,6 @@ function renderQuestion() {
 
     title.textContent = `Question ${questionNumber + 1} of ${questions.length}`;
 
-
     if (questionNumber < questions.length) {
 
 
@@ -74,13 +90,17 @@ function renderQuestion() {
         h2Question.textContent = questions[questionNumber].question
         container.appendChild(h2Question)
 
+        const showAnswersDiv = document.createElement('div');
+        showAnswersDiv.classList.add('show-answers');
+        container.appendChild(showAnswersDiv);
+
         //call functions
         if (questions[questionNumber].type === "boolean") {
-            trueFalseType(container,questions[questionNumber].answers);
+            trueFalseType(showAnswersDiv,questions[questionNumber].answers);
         } else if(questions[questionNumber].type === "radio") {
-            radioType(container, questions[questionNumber].answers)
+            radioType(showAnswersDiv, questions[questionNumber].answers)
         } else if (questions[questionNumber].type === "checkbox"){
-            checkboxType(container, questions[questionNumber].answers)
+            checkboxType(showAnswersDiv, questions[questionNumber].answers)
         }
 
         //next button
@@ -151,7 +171,7 @@ function renderQuestion() {
         }
     }
 
-
+    
     //Run true false answers
     function trueFalseType(container,answers) {
 
@@ -224,7 +244,7 @@ function renderQuestion() {
                     }
                 }
             })
-        });
+        });      
     }
 
 }

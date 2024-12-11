@@ -37,7 +37,7 @@ export const questions = [
     },
     {
         question: "How long did it take Brendan Eich to create the first version of JavaScript?",
-        answers: ["10 days", "3 months", "10 days", "1 year"],
+        answers: ["10 days", "3 months", "10 weeks", "1 year"],
         correctAnswer: 0, // 10 days
         type: "radio"
     },

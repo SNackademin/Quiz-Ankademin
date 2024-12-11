@@ -40,10 +40,23 @@ li {
     height: 40px;
     position: fixed;
     top: 15px;
-    left: 15px;
+    right: 15px;
 }
+#reset-quiz{
+   background-color: #561c7f;
+   color: white;
+   border: none;
+   border-radius: 10px;
+   cursor: pointer;
+   font-size: 16px;
+   width: 150px;
+   height: 40px;
+   position: fixed;
+   top: 15px;
+   left: 15px;}
 
-#change-color:hover {
+
+#change-color:hover,#next-question-button:hover,#reset-quiz:hover,#start-button:hover {
     background-color: #9500ff;
 }
 
@@ -54,9 +67,9 @@ li {
     border-radius: 20px;
     align-items: center;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: center;
     display: flex;
-    padding: 40px;
+    padding: 50px;
  }
 
  #start-button, #next-question-button {
@@ -76,9 +89,6 @@ li {
     margin-top: 20px;
  }
 
- #start-button:hover {
-    background-color: #9500ff;
-}
 
 #player-name {
     width: 300px;
@@ -92,3 +102,13 @@ li {
     cursor: pointer;
     font-style: italic;
 }
+
+.show-answers {
+   
+   text-align: left;
+   padding: 10px;
+
+   border-radius: 5px;
+   margin-top: 20px;
+}
+
