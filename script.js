@@ -1,5 +1,4 @@
 import {questions} from './array.js';
-console.log(questions)
 
 let playerName = document.getElementById('player-name');
 const startGameButton = document.getElementById('start-button');
@@ -39,10 +38,8 @@ changeColor.addEventListener('click', () => {
 
 startGameButton.addEventListener('click', () => {
     let playerNameDisplay = playerName.value.trim() || 'anonymous player';
-    console.log(playerNameDisplay)
-    //playerName.value = "";
+    console.log(`Good luck ${playerNameDisplay} !`)
 
-    //document.querySelector('.container').innerHTML = '';
     renderQuestion()
 })
 
@@ -59,8 +56,6 @@ function renderQuestion() {
 
 
     if (questionNumber < questions.length) {
-
-        console.log("This is the question number: " + questionNumber)
 
         const h2Question = document.createElement('h2');
         h2Question.textContent = questions[questionNumber].question
@@ -208,9 +203,6 @@ function validatedCheckedAnswer(selectedAnswer, correctAnswer) {
 
         if (checkSelectedCorrect) {
             playerScore++;
-            console.log("Correct answer! Player Score: " + playerScore);
-        } else {
-            console.log("Incorrect answer. Player Score: " + playerScore);
         }
     } else if (selectedAnswer === correctAnswer) { // Boolean - radio
         playerScore++;
