@@ -118,7 +118,9 @@ function renderQuestion() {
     //Run radio answers
     function radioType(container, answers) {
 
-        answers.forEach(posibleAnswer => {
+        selectedAnswer = null;
+
+        answers.forEach((posibleAnswer, index)   => {
 
             const labelRadioType = document.createElement('label');
             labelRadioType.innerHTML = posibleAnswer;
@@ -127,10 +129,14 @@ function renderQuestion() {
             const inputRadioType = document.createElement('input');
             inputRadioType.type = 'radio';
             inputRadioType.name = 'radio-select'
-            inputRadioType.value = posibleAnswer;
+            inputRadioType.value = index;
 
             container.appendChild(inputRadioType);
             labelRadioType.appendChild(inputRadioType);
+
+            inputRadioType.addEventListener('change',() => {
+                selectedAnswer = index;
+            });
         });
     }
 
