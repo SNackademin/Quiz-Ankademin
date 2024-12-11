@@ -14,38 +14,51 @@ let currentTextHTMLColor = true;
 function updateChekedTextColor() {
 
     const h1 = document.querySelector('h1');
-    const currentTextHTMLColor = h1.style.color;
+    h1.style.color = currentTextHTMLColor ? 'white' : 'black';
 
-    let newColorText;
+    const elementsToChange = document.querySelectorAll('h2, h4, li, label');
+    elementsToChange.forEach(element => {
+        element.style.color = currentTextHTMLColor ? 'white' : 'black';
+    });
 
-    if (currentTextHTMLColor) {
-            newColorText = 'white';
-        } else {
-            newColorText = 'black'
-        };
-
-        h1.style.color = newColorText;
-
-    const currentElementsTextColor = document.querySelectorAll('h2,h4,label,li');
-    currentElementsTextColor.forEach(element => {
-        element.style.color = newColorText;
-    })
+    currentTextHTMLColor = !currentTextHTMLColor;
 }
 
+function resetStopQuiz() {
 
-stopQuizButton.addEventListener('click', () => {
     const container = document.querySelector('.container');
     const title = document.querySelector('h1');
 
-    document.querySelector('.container').innerHTML = '';
+    stopQuizButton.addEventListener('click', () => {
+        //reset variabel
+        playerScore = 0;
+        questionNumber = 0;
+        selectedAnswer = null;
+        incorrectSelectedAnswers = [];
 
-    title.textContent = `You abandoned the quiz`;
+        container.innerHTML = '';
 
-    const playerFinalScore = document.createElement('h2');
-    playerFinalScore.textContent = `Your score is: ${playerScore} points!`;
-    container.appendChild(playerFinalScore);
+        //this was in the body
+        title.textContent = 'Quiz game!';
+        container.innerHTML = `
+            <input type="text" id="player-name" placeholder="Enter your name...">
+            <button id="start-button">Start</button>`;
 
+        //Run start
+        const startGameButton = document.getElementById('start-button');
+
+        startGameButton.addEventListener('click', () => {
+            
+            let playerNameDisplay = playerName.value.trim() || 'anonymous player';
+            console.log(`Good luck ${playerNameDisplay} !`)
+            renderQuestion();
+        });
+        
+        const playerNameInput = document.getElementById('player-name');
+        playerNameInput.value = '';
     });
+}
+resetStopQuiz();
 
 
 changeColor.addEventListener('click', () => {
