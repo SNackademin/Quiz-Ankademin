@@ -3,37 +3,48 @@ import {questions} from './array.js';
 let playerName = document.getElementById('player-name');
 const startGameButton = document.getElementById('start-button');
 let playerScore = 0;
-
+//i need fix that
 let changeColor = document.getElementById('change-color');
+
+let currentBodyBackgroundColor = true;
+let currentTextHTMLColor = true;
+
+function updateChekedTextColor() {
+
+    const h1 = document.querySelector('h1');
+    const currentTextHTMLColor = h1.style.color;
+
+    let newColorText;
+
+    if (currentTextHTMLColor) {
+            newColorText = 'black';
+        } else {
+            newColorText = 'white'
+        };
+
+        h1.style.color = newColorText;
+
+    const currentElementsTextColor = document.querySelectorAll('h2,h4,label,li');
+    currentElementsTextColor.forEach(element => {
+        element.style.color = newColorText;
+    })
+}
+
+
 changeColor.addEventListener('click', () => {
+
+    updateChekedTextColor();
+
     //change body color
-    const currentBodyBackgroundColor = document.body.style.backgroundColor;
-    if (currentBodyBackgroundColor === 'rgb(48, 22, 74)') {
-        document.body.style.backgroundColor = '#692A91';
+    if (currentBodyBackgroundColor) {
+        document.body.style.background = 'radial-gradient(circle, rgba(31,16,53,1) 17%, rgba(61,26,89,1) 91%, rgba(46,21,71,1) 100%)';
     } else {
-        document.body.style.backgroundColor = '#30164A';
+        document.body.style.background = 'radial-gradient(circle, rgba(113,45,155,1) 25%, rgba(61,26,89,1) 50%, rgba(31,16,53,1) 90%)';
     }
-    //change container color
-    const currentContainerBackground = document.querySelector('.container').style.backgroundColor;
-    if (currentContainerBackground === 'rgb(124, 124, 124)') {
-        document.querySelector('.container').style.backgroundColor = 'rgb(255, 255, 255)'; 
-    } else {
-        document.querySelector('.container').style.backgroundColor = 'rgb(124, 124, 124)';
-    }
-    //change input color
-    const currentInputBackground = document.getElementById('player-name').style.backgroundColor;;
-    if (currentInputBackground === 'rgb(132, 131, 131)') {
-        document.getElementById('player-name').style.backgroundColor = 'rgb(255, 255, 255)'; 
-    } else {
-        document.getElementById('player-name').style.backgroundColor = 'rgb(132, 131, 131)';
-    }
-    //change text input color // doesnt work
-    // const currentInputTextColor = document.getElementById('player-name');
-    // if (currentInputTextColor.style.color === 'rgb(132, 131, 131)') {
-    //     currentInputTextColor.style.color = 'rgb(255, 255, 255)' ;
-    // } else {
-    //     currentInputTextColor.style.color = 'rgb(132, 131, 131)';
-    // }
+    currentBodyBackgroundColor = !currentBodyBackgroundColor;
+
+
+    currentTextHTMLColor = !currentTextHTMLColor;
 });
 
 startGameButton.addEventListener('click', () => {
@@ -45,6 +56,7 @@ startGameButton.addEventListener('click', () => {
 
 let questionNumber = 0;
 let selectedAnswer = null;
+
 function renderQuestion() {
     selectedAnswer = [];
     const container = document.querySelector('.container');
@@ -56,6 +68,7 @@ function renderQuestion() {
 
 
     if (questionNumber < questions.length) {
+
 
         const h2Question = document.createElement('h2');
         h2Question.textContent = questions[questionNumber].question
@@ -82,6 +95,8 @@ function renderQuestion() {
 
             questionNumber++;
             renderQuestion();
+
+            updateChekedTextColor();
         })
         container.appendChild(nextQuestionButton)
 
