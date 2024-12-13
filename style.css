@@ -1,5 +1,12 @@
  
- body{
+body.change-mode h1, body.change-mode h2, body.change-mode h4, body.change-mode li, body.change-mode label {
+   color: white;
+}
+body.change-mode {
+   background: radial-gradient(circle, rgba(31,16,53,1) 17%, rgba(61,26,89,1) 91%, rgba(46,21,71,1) 100%);
+}
+
+body{
     display: flex;
     justify-content: center;
     align-items: center;

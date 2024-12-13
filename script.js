@@ -5,24 +5,28 @@ const startGameButton = document.getElementById('start-button');
 const stopQuizButton = document.getElementById('reset-quiz');
 let playerScore = 0;
 
-//I need fix this
+// Dark mode fixed :')
 let changeColor = document.getElementById('change-color');
 
-let currentBodyBackgroundColor = true;
-let currentTextHTMLColor = true;
+changeColor.addEventListener('click', ()=> {
+    document.body.classList.toggle('change-mode')
+});
 
-function updateChekedTextColor() {
+// let currentBodyBackgroundColor = true;
+// let currentTextHTMLColor = true;
 
-    const h1 = document.querySelector('h1');
-    h1.style.color = currentTextHTMLColor ? 'white' : 'black';
+// function updateChekedTextColor() {
 
-    const elementsToChange = document.querySelectorAll('h2, h4, li, label');
-    elementsToChange.forEach(element => {
-        element.style.color = currentTextHTMLColor ? 'white' : 'black';
-    });
+//     const h1 = document.querySelector('h1');
+//     h1.style.color = currentTextHTMLColor ? 'white' : 'black';
 
-    currentTextHTMLColor = !currentTextHTMLColor;
-}
+//     const elementsToChange = document.querySelectorAll('h2, h4, li, label');
+//     elementsToChange.forEach(element => {
+//         element.style.color = currentTextHTMLColor ? 'white' : 'black';
+//     });
+
+//     currentTextHTMLColor = !currentTextHTMLColor;
+// }
 
 function resetStopQuiz() {
 
@@ -61,21 +65,21 @@ function resetStopQuiz() {
 resetStopQuiz();
 
 
-changeColor.addEventListener('click', () => {
+// changeColor.addEventListener('click', () => {
 
-    updateChekedTextColor();
+//     updateChekedTextColor();
 
-    //change body color
-    if (currentBodyBackgroundColor) {
-        document.body.style.background = 'radial-gradient(circle, rgba(31,16,53,1) 17%, rgba(61,26,89,1) 91%, rgba(46,21,71,1) 100%)';
-    } else {
-        document.body.style.background = 'radial-gradient(circle, rgba(113,45,155,1) 25%, rgba(61,26,89,1) 50%, rgba(31,16,53,1) 90%)';
-    }
-    currentBodyBackgroundColor = !currentBodyBackgroundColor;
+//     //change body color
+//     if (currentBodyBackgroundColor) {
+//         document.body.style.background = 'radial-gradient(circle, rgba(31,16,53,1) 17%, rgba(61,26,89,1) 91%, rgba(46,21,71,1) 100%)';
+//     } else {
+//         document.body.style.background = 'radial-gradient(circle, rgba(113,45,155,1) 25%, rgba(61,26,89,1) 50%, rgba(31,16,53,1) 90%)';
+//     }
+//     currentBodyBackgroundColor = !currentBodyBackgroundColor;
 
 
-    currentTextHTMLColor = !currentTextHTMLColor;
-});
+//     currentTextHTMLColor = !currentTextHTMLColor;
+// });
 
 startGameButton.addEventListener('click', () => {
     let playerNameDisplay = playerName.value.trim() || 'anonymous player';
